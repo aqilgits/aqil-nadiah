@@ -1,26 +1,198 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-playfair: var(--font-playfair);
+  --font-script: var(--font-script);
+  --font-lato: var(--font-lato);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-lato), sans-serif;
+  background: #e5dcf0;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), serif;
+}
+
+.font-lato {
+  font-family: var(--font-lato), sans-serif;
+}
+
+/* ── Floral section background ───────────────────── */
+.floral-section {
+  position: relative;
+  background-color: #f7f3fb;
+}
+
+/* ── Fixed floral frame overlay ──────────────────── */
+.floral-frame {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: 100dvh;
+  background-image: url('/purple-flowe.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 30;
+}
+
+/* ── Scrollable content pane — masked to frame inner area ── */
+.content-viewport {
+  position: fixed;
+  inset: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 20;
+  /* Clip content to the inner frame: transparent outside, opaque inside */
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      transparent 8%,
+      black 16%,
+      black 80%,
+      transparent 90%,
+      transparent 100%);
+  mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      transparent 8%,
+      black 16%,
+      black 80%,
+      transparent 90%,
+      transparent 100%);
+}
+
+/* ── Scroll-reveal ───────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Cover entrance ──────────────────────────────── */
+@keyframes coverFade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cover-enter {
+  opacity: 0;
+  animation: coverFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.cover-enter-1 {
+  animation-delay: 0.1s;
+}
+
+.cover-enter-2 {
+  animation-delay: 0.35s;
+}
+
+.cover-enter-3 {
+  animation-delay: 0.55s;
+}
+
+.cover-enter-4 {
+  animation-delay: 0.75s;
+}
+
+.cover-enter-5 {
+  animation-delay: 0.95s;
+}
+
+/* ── Petal drift (decorative cover petals) ───────── */
+@keyframes petal {
+  0% {
+    transform: translateY(-40px) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(12px);
+  }
+
+  90% {
+    opacity: 0.25;
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(360deg) translateX(-8px);
+    opacity: 0;
+  }
+}
+
+.petal {
+  position: absolute;
+  border-radius: 60% 0 60% 0;
+  background: #c9a8e8;
+  pointer-events: none;
+  opacity: 0;
+  animation: petal linear infinite;
+}
+
+/* Global petal overlay — drifts across every section */
+.petal-layer {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: 100dvh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 40;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal-layer {
+    display: none;
+  }
+}
+
+/* ── Scrollbar hide ──────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
