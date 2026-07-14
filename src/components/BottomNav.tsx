@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 /* ── Shared event data ─────────────────────────────── */
-const VENUE_NAME = "Dewan Serbaguna";
+const VENUE_NAME = "Dewan Serbaguna MDL";
 const VENUE_ADDR = "Labis, Johor";
 const DATE_LABEL = "Ahad · 30 Ogos 2026";
 const TIME_LABEL = "11:00 AM – 4:00 PM";
@@ -76,8 +76,8 @@ function PillLink({ href, children, filled = false }: { href: string; children: 
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex-1 py-3 px-19   rounded-full font-lato text-[10px] tracking-[0.28em] uppercase
-                 flex items-center justify-center transition-all active:scale-[0.97]"
+      className="flex-1 py-2.5 px-3 rounded-full font-lato text-[9px] tracking-[0.28em] uppercase
+                 flex items-center justify-center transition-all active:scale-[0.97] min-w-0"
       style={
         filled
           ? { background: "linear-gradient(135deg,#8b5fc0,#6d3ba0)", color: "#fff", boxShadow: "0 4px 16px rgba(109,59,160,0.35)" }
@@ -285,20 +285,23 @@ function SheetBody({ id, onClose }: { id: string; onClose: () => void }) {
 
   // lokasi
   return (
-    <div className="flex flex-col items-center gap-4 text-center">
+    <div className="flex flex-col items-center gap-3 text-center">
       <div>
         <p className="font-playfair text-[#382650] text-base">{VENUE_NAME}</p>
         <p className="font-lato text-[#6a5688] text-[11px] leading-relaxed mt-1">{VENUE_ADDR}</p>
       </div>
       <div
-        className="w-full flex items-center justify-center"
-        style={{ height: 120, borderRadius: 16, border: "1px solid #e6dcf3", background: "linear-gradient(145deg,#f0e8fa,#f9f0f5)" }}
+        className="w-full overflow-hidden shadow-sm"
+        style={{ height: 180, borderRadius: 16, border: "1px solid #e6dcf3" }}
       >
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="#7c4fb0">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-        </svg>
+        <iframe
+          title="Location Map"
+          className="w-full h-full border-0"
+          loading="lazy"
+          src="https://www.google.com/maps?q=92J9%2BPJ+Labis,+Johor&output=embed"
+        />
       </div>
-      <div className="flex gap-3 w-full">
+      <div className="flex gap-2 w-full">
         <PillLink href={MAPS_URL}>Google Maps</PillLink>
         <PillLink href={WAZE_URL}>Waze</PillLink>
       </div>
