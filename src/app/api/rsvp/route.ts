@@ -1,40 +1,50 @@
-import { promises as fs } from "fs";
-import { join } from "path";
 import { NextRequest, NextResponse } from "next/server";
-
-const DATA_FILE = join(process.cwd(), "public/data/rsvp.json");
-
-async function readRSVPs() {
-    try {
-        const data = await fs.readFile(DATA_FILE, "utf-8");
-        return JSON.parse(data);
-    } catch {
-        return [];
-    }
-}
-
-async function writeRSVPs(data: any) {
-    await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2));
-}
+import { supabase } from "@/lib/supabase";
 
 export async function GET() {
-    const rsvps = await readRSVPs();
-    return NextResponse.json(rsvps);
+  try {
+    const { data, error } = await supabase
+      .from("rsvps")
+      .select("*")
+      .order("created_at", { ascending: true });
+
+    if (error) {
+      console.error("Supabase GET error:", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json(data || []);
+  } catch (error: any) {
+    console.error("GET rsvp unexpected error:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
 }
 
 export async function POST(req: NextRequest) {
+  try {
     const { name, count } = await req.json();
 
     if (!name || !count) {
-        return NextResponse.json(
-            { error: "Missing name or count" },
-            { status: 400 }
-        );
+      return NextResponse.json(
+        { error: "Missing name or count" },
+        { status: 400 }
+      );
     }
 
-    const rsvps = await readRSVPs();
-    rsvps.push({ name, count, timestamp: new Date().toISOString() });
-    await writeRSVPs(rsvps);
+    const { data, error } = await supabase
+      .from("rsvps")
+      .insert([{ name, count }])
+      .select()
+      .single();
 
-    return NextResponse.json({ success: true, rsvp: { name, count } });
+    if (error) {
+      console.error("Supabase POST error:", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true, rsvp: data });
+  } catch (error: any) {
+    console.error("POST rsvp unexpected error:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
 }
