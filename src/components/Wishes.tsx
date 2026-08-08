@@ -10,8 +10,11 @@ interface Wish {
   timestamp?: string;
 }
 
+const PER_PAGE = 3;
+
 export default function Wishes() {
   const [wishes, setWishes] = useState<Wish[]>([]);
+  const [page, setPage] = useState(0);
   const [name, setName] = useState("");
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(true);

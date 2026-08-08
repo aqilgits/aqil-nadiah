@@ -75,11 +75,10 @@ export default function Gallery() {
                       boxShadow: isCenter ? "0 20px 50px rgba(44, 54, 45, 0.2)" : "none",
                     }}
                   >
-                    <img
-                      src={p.src}
-                      alt={p.label}
-                      className="w-full h-full object-cover rounded-2xl"
-                      draggable={false}
+                    <div
+                      className="w-full h-full rounded-2xl"
+                      style={{ background: p.bg }}
+                      aria-label={p.label}
                     />
                   </div>
                 </div>
