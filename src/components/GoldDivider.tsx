@@ -7,8 +7,8 @@ export default function GoldDivider({ tight = false }: { tight?: boolean }) {
           {/* olive leaf sprig flanking an amethyst bud — echoes the border */}
           <path d="M4,7 Q7,3 10,7 Q7,11 4,7 Z" fill="#7d8a4e" opacity="0.55" />
           <path d="M26,7 Q23,3 20,7 Q23,11 26,7 Z" fill="#7d8a4e" opacity="0.55" />
-          <circle cx="15" cy="7" r="2.4" fill="#7c4fb0" />
-          <circle cx="15" cy="7" r="4.2" fill="none" stroke="#7c4fb0" strokeWidth="0.5" opacity="0.4" />
+          <circle cx="15" cy="7" r="2.4" fill="#cf8c9a" />
+          <circle cx="15" cy="7" r="4.2" fill="none" stroke="#cf8c9a" strokeWidth="0.5" opacity="0.4" />
         </svg>
         <div className="flex-1 h-px bg-[#7d8a4e] opacity-40" />
       </div>

@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "../components";
+@source "../app";
 
 @theme inline {
   --font-playfair: var(--font-playfair);
@@ -12,7 +14,7 @@
 
 body {
   font-family: var(--font-lato), sans-serif;
-  background: #e5dcf0;
+  background: #f5e1e5;
 }
 
 .font-script {
@@ -30,7 +32,7 @@ body {
 /* ── Floral section background ───────────────────── */
 .floral-section {
   position: relative;
-  background-color: #f7f3fb;
+  background-color: #ffffff;
 }
 
 /* ── Fixed floral frame overlay ──────────────────── */
@@ -42,7 +44,7 @@ body {
   width: 100%;
   max-width: 430px;
   height: 100dvh;
-  background-image: url('/purple-flowe.png');
+  background-image: url('/floral-border.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -161,7 +163,7 @@ body {
 .petal {
   position: absolute;
   border-radius: 60% 0 60% 0;
-  background: #c9a8e8;
+  background: #e8a5b1;
   pointer-events: none;
   opacity: 0;
   animation: petal linear infinite;

@@ -3,25 +3,24 @@
 import { useEffect, useState } from "react";
 
 /* ── Shared event data ─────────────────────────────── */
-const VENUE_NAME = "Dewan Serbaguna MDL";
-const VENUE_ADDR = "Labis, Johor";
-const DATE_LABEL = "Ahad · 30 Ogos 2026";
+const VENUE_NAME = "No 14, Jalan Orked,";
+const VENUE_ADDR = "Kampung seri machap, Johor";
+const DATE_LABEL = "Ahad · 12 September 2026";
 const TIME_LABEL = "11:00 AM – 4:00 PM";
 
 const CONTACTS = [
-  { name: "Iskandar Syah", role: "Bapa", phone: "6010795 6529" },
-  { name: "Nazriha", role: "Ibu", phone: "60196528919" },
-  { name: "Izzah Nabilah", role: "Kakak", phone: "60123456789" },
+  { name: "Zaidi Moin", role: "Bapa Saudara", phone: "60137154006" },
+  { name: "Haziq Akmal", role: "Saudara", phone: "6011170290150" },
 ];
 
 const MAPS_Q = encodeURIComponent(`${VENUE_NAME}, ${VENUE_ADDR}`);
-const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${MAPS_Q}`;
+const MAPS_URL = `https://maps.app.goo.gl/TbVM9A96PsAG3EdWA`;
 const WAZE_URL = `https://waze.com/ul?q=${MAPS_Q}`;
 const GCAL_URL =
   "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-  `&text=${encodeURIComponent("Majlis Perkahwinan Nadiah & Aqil")}` +
-  "&dates=20260830T030000Z/20260830T080000Z" +
-  `&details=${encodeURIComponent("Jemputan majlis perkahwinan Nadiah & Aqil.")}` +
+  `&text=${encodeURIComponent("Majlis Perkahwinan Aqil & Nadiah")}` +
+  `&dates=20260912T030000Z/20260912T080000Z` +
+  `&details=${encodeURIComponent("Jemputan majlis perkahwinan Aqil & Nadiah.")}` +
   `&location=${MAPS_Q}`;
 
 /* ── Icons ─────────────────────────────────────────── */
@@ -80,8 +79,8 @@ function PillLink({ href, children, filled = false }: { href: string; children: 
                  flex items-center justify-center transition-all active:scale-[0.97] min-w-0"
       style={
         filled
-          ? { background: "linear-gradient(135deg,#8b5fc0,#6d3ba0)", color: "#fff", boxShadow: "0 4px 16px rgba(109,59,160,0.35)" }
-          : { border: "1px solid #e6dcf3", background: "rgba(255,255,255,0.7)", color: "#6a5688" }
+          ? { background: "linear-gradient(135deg,#d892a0,#bd6f80)", color: "#fff", boxShadow: "0 4px 16px rgba(189,111,128,0.35)" }
+          : { border: "1px solid #ecd9dd", background: "rgba(255,255,255,0.7)", color: "#8c676f" }
       }
     >
       {children}
@@ -159,15 +158,15 @@ function SheetBody({ id, onClose }: { id: string; onClose: () => void }) {
   if (id === "hubungi") {
     return (
       <div className="flex flex-col gap-3">
-        <p className="font-lato text-[#6a5688] text-[11px] text-center leading-relaxed mb-1">
+        <p className="font-lato text-[#8c676f] text-[11px] text-center leading-relaxed mb-1">
           Untuk sebarang pertanyaan, hubungi kami.
         </p>
         {CONTACTS.map(c => (
           <div key={c.phone} className="rounded-2xl px-4 py-3 flex items-center justify-between gap-3"
-            style={{ background: "rgba(255,255,255,0.7)", border: "1px solid #e6dcf3" }}>
+            style={{ background: "rgba(255,255,255,0.7)", border: "1px solid #ecd9dd" }}>
             <div className="text-left">
-              <p className="font-playfair text-[#382650] text-sm">{c.name}</p>
-              <p className="font-lato text-[#7c4fb0] text-[9px] tracking-[0.2em] uppercase">{c.role}</p>
+              <p className="font-playfair text-[#4a3036] text-sm">{c.name}</p>
+              <p className="font-lato text-[#cf8c9a] text-[9px] tracking-[0.2em] uppercase">{c.role}</p>
             </div>
             <a
               href={`https://wa.me/${c.phone.replace(/\D/g, "")}`}
@@ -190,12 +189,12 @@ function SheetBody({ id, onClose }: { id: string; onClose: () => void }) {
     return (
       <div className="flex flex-col items-center gap-4 text-center">
         <div className="rounded-2xl px-6 py-5 w-full"
-          style={{ background: "rgba(255,255,255,0.7)", border: "1px solid #e6dcf3" }}>
-          <p className="font-lato text-[#7c4fb0] text-[9px] tracking-[0.4em] uppercase mb-1">Tarikh Majlis</p>
-          <p className="font-playfair text-[#382650] text-lg tracking-wide">{DATE_LABEL}</p>
-          <div className="w-8 h-px bg-[#e6dcf3] mx-auto my-3" />
-          <p className="font-lato text-[#7c4fb0] text-[9px] tracking-[0.4em] uppercase mb-1">Masa</p>
-          <p className="font-playfair text-[#382650] text-base">{TIME_LABEL}</p>
+          style={{ background: "rgba(255,255,255,0.7)", border: "1px solid #ecd9dd" }}>
+          <p className="font-lato text-[#cf8c9a] text-[9px] tracking-[0.4em] uppercase mb-1">Tarikh Majlis</p>
+          <p className="font-playfair text-[#4a3036] text-lg tracking-wide">{DATE_LABEL}</p>
+          <div className="w-8 h-px bg-[#ecd9dd] mx-auto my-3" />
+          <p className="font-lato text-[#cf8c9a] text-[9px] tracking-[0.4em] uppercase mb-1">Masa</p>
+          <p className="font-playfair text-[#4a3036] text-base">{TIME_LABEL}</p>
         </div>
         <PillLink href={GCAL_URL} filled>Tambah ke Google Kalendar</PillLink>
       </div>
@@ -206,8 +205,8 @@ function SheetBody({ id, onClose }: { id: string; onClose: () => void }) {
     if (rSent) {
       return (
         <div className="text-center py-4">
-          <p className="font-script text-3xl text-[#7c4fb0] mb-1">Terima kasih</p>
-          <p className="font-lato text-[#6a5688] text-[11px] leading-relaxed">
+          <p className="font-script text-3xl text-[#cf8c9a] mb-1">Terima kasih</p>
+          <p className="font-lato text-[#8c676f] text-[11px] leading-relaxed">
             Kehadiran anda telah disahkan.<br />Kami menantikan kedatangan anda.
           </p>
         </div>
@@ -219,26 +218,26 @@ function SheetBody({ id, onClose }: { id: string; onClose: () => void }) {
         className="flex flex-col gap-5 text-left"
       >
         <div>
-          <label className="font-lato text-[#7c4fb0] text-[9px] tracking-[0.32em] uppercase">Nama anda</label>
+          <label className="font-lato text-[#cf8c9a] text-[9px] tracking-[0.32em] uppercase">Nama anda</label>
           <input value={rName} onChange={e => setRName(e.target.value)} required disabled={rLoading}
-            className="w-full bg-transparent border-b-2 border-[#e6dcf3] py-2 mt-1 text-[#382650] font-playfair text-base focus:outline-none focus:border-[#7c4fb0] transition-colors disabled:opacity-60" />
+            className="w-full bg-transparent border-b-2 border-[#ecd9dd] py-2 mt-1 text-[#4a3036] font-playfair text-base focus:outline-none focus:border-[#cf8c9a] transition-colors disabled:opacity-60" />
         </div>
         <div className="flex gap-10 items-center">
           <div>
-            <label className="font-lato text-[#7c4fb0] text-[9px] tracking-[0.32em] uppercase">Bilangan kehadiran</label>
+            <label className="font-lato text-[#cf8c9a] text-[9px] tracking-[0.32em] uppercase">Bilangan kehadiran</label>
           </div>
           <div className="flex items-center gap-5 mt-2">
             <button type="button" onClick={() => setRCount(c => Math.max(1, c - 1))} disabled={rLoading}
-              className="w-8 h-8 rounded-full border border-[#e6dcf3] bg-white/70 text-[#6a5688] text-lg flex items-center justify-center active:scale-95 transition disabled:opacity-60">−</button>
-            <span className="font-playfair text-[#382650] text-xl w-8 text-center" style={{ fontVariantNumeric: "tabular-nums" }}>{rCount}</span>
+              className="w-8 h-8 rounded-full border border-[#ecd9dd] bg-white/70 text-[#8c676f] text-lg flex items-center justify-center active:scale-95 transition disabled:opacity-60">−</button>
+            <span className="font-playfair text-[#4a3036] text-xl w-8 text-center" style={{ fontVariantNumeric: "tabular-nums" }}>{rCount}</span>
             <button type="button" onClick={() => setRCount(c => Math.min(15, c + 1))} disabled={rLoading}
-              className="w-8 h-8 rounded-full border border-[#e6dcf3] bg-white/70 text-[#6a5688] text-lg flex items-center justify-center active:scale-95 transition disabled:opacity-60">+</button>
-            <span className="font-lato text-[#6a5688] text-[10px]">orang</span>
+              className="w-8 h-8 rounded-full border border-[#ecd9dd] bg-white/70 text-[#8c676f] text-lg flex items-center justify-center active:scale-95 transition disabled:opacity-60">+</button>
+            <span className="font-lato text-[#8c676f] text-[10px]">orang</span>
           </div>
         </div>
         <button type="submit" disabled={rLoading}
           className="w-full py-3.5 rounded-full font-lato text-[10px] tracking-[0.34em] uppercase active:scale-[0.98] transition disabled:opacity-60"
-          style={{ background: "linear-gradient(135deg,#8b5fc0,#6d3ba0)", color: "#fff", boxShadow: "0 4px 18px rgba(109,59,160,0.35)" }}>
+          style={{ background: "linear-gradient(135deg,#d892a0,#bd6f80)", color: "#fff", boxShadow: "0 4px 18px rgba(189,111,128,0.35)" }}>
           {rLoading ? "Menghantar..." : "Hantar"}
         </button>
       </form>
@@ -249,8 +248,8 @@ function SheetBody({ id, onClose }: { id: string; onClose: () => void }) {
     if (wSent) {
       return (
         <div className="text-center py-4">
-          <p className="font-script text-3xl text-[#7c4fb0] mb-1">Terima kasih</p>
-          <p className="font-lato text-[#6a5688] text-[11px] leading-relaxed">
+          <p className="font-script text-3xl text-[#cf8c9a] mb-1">Terima kasih</p>
+          <p className="font-lato text-[#8c676f] text-[11px] leading-relaxed">
             Ucapan anda amat kami hargai.
           </p>
         </div>
@@ -261,22 +260,22 @@ function SheetBody({ id, onClose }: { id: string; onClose: () => void }) {
         onSubmit={handleWishSubmit}
         className="flex flex-col gap-5 text-left"
       >
-        <p className="font-lato text-[#6a5688] text-[11px] text-center leading-relaxed">
+        <p className="font-lato text-[#8c676f] text-[11px] text-center leading-relaxed">
           Tinggalkan ucapan &amp; doa untuk pasangan.
         </p>
         <div>
-          <label className="font-lato text-[#7c4fb0] text-[9px] tracking-[0.32em] uppercase">Nama anda</label>
+          <label className="font-lato text-[#cf8c9a] text-[9px] tracking-[0.32em] uppercase">Nama anda</label>
           <input value={wName} onChange={e => setWName(e.target.value)} required disabled={wLoading}
-            className="w-full bg-transparent border-b-2 border-[#e6dcf3] py-2 mt-1 text-[#382650] font-playfair text-base focus:outline-none focus:border-[#7c4fb0] transition-colors disabled:opacity-60" />
+            className="w-full bg-transparent border-b-2 border-[#ecd9dd] py-2 mt-1 text-[#4a3036] font-playfair text-base focus:outline-none focus:border-[#cf8c9a] transition-colors disabled:opacity-60" />
         </div>
         <div>
-          <label className="font-lato text-[#7c4fb0] text-[9px] tracking-[0.32em] uppercase">Ucapan</label>
+          <label className="font-lato text-[#cf8c9a] text-[9px] tracking-[0.32em] uppercase">Ucapan</label>
           <textarea value={wMsg} onChange={e => setWMsg(e.target.value)} required rows={3} disabled={wLoading}
-            className="w-full bg-transparent border-b-2 border-[#e6dcf3] py-2 mt-1 text-[#382650] font-lato text-sm resize-none focus:outline-none focus:border-[#7c4fb0] transition-colors disabled:opacity-60" />
+            className="w-full bg-transparent border-b-2 border-[#ecd9dd] py-2 mt-1 text-[#4a3036] font-lato text-sm resize-none focus:outline-none focus:border-[#cf8c9a] transition-colors disabled:opacity-60" />
         </div>
         <button type="submit" disabled={wLoading}
           className="w-full py-3.5 rounded-full font-lato text-[10px] tracking-[0.34em] uppercase active:scale-[0.98] transition disabled:opacity-60"
-          style={{ background: "linear-gradient(135deg,#8b5fc0,#6d3ba0)", color: "#fff", boxShadow: "0 4px 18px rgba(109,59,160,0.35)" }}>
+          style={{ background: "linear-gradient(135deg,#d892a0,#bd6f80)", color: "#fff", boxShadow: "0 4px 18px rgba(189,111,128,0.35)" }}>
           {wLoading ? "Menghantar..." : "Hantar Ucapan"}
         </button>
       </form>
@@ -287,23 +286,22 @@ function SheetBody({ id, onClose }: { id: string; onClose: () => void }) {
   return (
     <div className="flex flex-col items-center gap-3 text-center">
       <div>
-        <p className="font-playfair text-[#382650] text-base">{VENUE_NAME}</p>
-        <p className="font-lato text-[#6a5688] text-[11px] leading-relaxed mt-1">{VENUE_ADDR}</p>
+        <p className="font-playfair text-[#4a3036] text-base">{VENUE_NAME}</p>
+        <p className="font-lato text-[#8c676f] text-[11px] leading-relaxed mt-1">{VENUE_ADDR}</p>
       </div>
       <div
         className="w-full overflow-hidden shadow-sm"
-        style={{ height: 180, borderRadius: 16, border: "1px solid #e6dcf3" }}
+        style={{ height: 180, borderRadius: 16, border: "1px solid #ecd9dd" }}
       >
         <iframe
           title="Location Map"
           className="w-full h-full border-0"
           loading="lazy"
-          src="https://www.google.com/maps?q=92J9%2BPJ+Labis,+Johor&output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.6827004158977!2d103.26901097492869!3d1.874745959663987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d0641eced7a395%3A0x46548fc5ef0c9cac!2s14%2C%20Jalan%20Orked%2C%20Kampung%20Perak%2C%2086200%20Simpang%20Renggam%2C%20Johor%20Darul%20Ta'zim!5e0!3m2!1sen!2smy!4v1786150372860!5m2!1sen!2smy"
         />
       </div>
       <div className="flex gap-2 w-full">
         <PillLink href={MAPS_URL}>Google Maps</PillLink>
-        <PillLink href={WAZE_URL}>Waze</PillLink>
       </div>
     </div>
   );
@@ -343,7 +341,7 @@ export default function BottomNav() {
           backdropFilter: "blur(18px) saturate(160%)",
           WebkitBackdropFilter: "blur(18px) saturate(160%)",
           border: "1px solid rgba(255,255,255,0.6)",
-          boxShadow: "0 10px 34px rgba(88,54,140,0.22), inset 0 1px 0 rgba(255,255,255,0.55)",
+          boxShadow: "0 10px 34px rgba(114,80,88,0.22), inset 0 1px 0 rgba(255,255,255,0.55)",
         }}
       >
         {NAV.map(item => {
@@ -354,15 +352,15 @@ export default function BottomNav() {
               type="button"
               onClick={() => setOpenId(item.id)}
               className="flex-1 flex flex-col items-center justify-center gap-1 py-1.5 rounded-[20px] transition-all duration-300"
-              style={{ color: isActive ? "#ffffff" : "#9b86bd" }}
+              style={{ color: isActive ? "#ffffff" : "#ccaab1" }}
             >
               <span
                 className="flex items-center justify-center rounded-2xl transition-all duration-300"
                 style={{
                   width: 40,
                   height: 34,
-                  background: isActive ? "linear-gradient(145deg, #8b5fc0, #6d3ba0)" : "transparent",
-                  boxShadow: isActive ? "0 6px 16px rgba(109,59,160,0.42)" : "none",
+                  background: isActive ? "linear-gradient(145deg, #d892a0, #bd6f80)" : "transparent",
+                  boxShadow: isActive ? "0 6px 16px rgba(189,111,128,0.42)" : "none",
                   transform: isActive ? "translateY(-2px)" : "none",
                 }}
               >
@@ -370,7 +368,7 @@ export default function BottomNav() {
               </span>
               <span
                 className="font-lato text-[8px] tracking-[0.15em] uppercase transition-colors duration-300"
-                style={{ color: isActive ? "#6d3ba0" : "#a596c0" }}
+                style={{ color: isActive ? "#bd6f80" : "#d1b6bc" }}
               >
                 {item.label}
               </span>
@@ -387,7 +385,7 @@ export default function BottomNav() {
             className="fixed inset-0 z-[59]"
             onClick={close}
             style={{
-              background: "rgba(45,20,55,0.42)",
+              background: "rgba(71,50,56,0.42)",
               backdropFilter: "blur(3px)",
               WebkitBackdropFilter: "blur(3px)",
               opacity: visible ? 1 : 0,
@@ -401,21 +399,21 @@ export default function BottomNav() {
               aria-modal="true"
               className="w-full max-w-[430px] pointer-events-auto px-6 pt-3 pb-9"
               style={{
-                background: "linear-gradient(180deg,#fbf8fe 0%,#f3ecfb 100%)",
+                background: "linear-gradient(180deg,#fffafb 0%,#fdf6f7 100%)",
                 borderTopLeftRadius: 28,
                 borderTopRightRadius: 28,
-                borderTop: "1px solid #e6dcf3",
-                boxShadow: "0 -14px 44px rgba(88,54,140,0.24)",
+                borderTop: "1px solid #ecd9dd",
+                boxShadow: "0 -14px 44px rgba(114,80,88,0.24)",
                 transform: visible ? "translateY(0)" : "translateY(100%)",
                 transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1)",
               }}
             >
               {/* Drag handle */}
-              <div className="w-10 h-1.5 rounded-full mx-auto mb-4" style={{ background: "#d9c9ee" }} />
+              <div className="w-10 h-1.5 rounded-full mx-auto mb-4" style={{ background: "#eed3d9" }} />
 
               {/* Header */}
               <div className="flex items-center justify-center relative mb-5">
-                <h3 className="font-script text-[2.3rem] leading-none text-[#382650] drop-shadow-sm">
+                <h3 className="font-script text-[2.3rem] leading-none text-[#4a3036] drop-shadow-sm">
                   {SHEET_TITLE[openId]}
                 </h3>
                 <button
@@ -423,7 +421,7 @@ export default function BottomNav() {
                   onClick={close}
                   aria-label="Tutup"
                   className="absolute right-0 top-1 w-7 h-7 rounded-full flex items-center justify-center active:scale-90 transition"
-                  style={{ background: "rgba(124,79,176,0.1)", color: "#7c4fb0" }}
+                  style={{ background: "rgba(207,140,154,0.1)", color: "#cf8c9a" }}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                     <path d="M6 6l12 12M18 6L6 18" />

@@ -27,7 +27,7 @@ export default function Countdown() {
     <section className="floral-section overflow-hidden" id="countdown">
       <div className="relative z-10 flex flex-col items-center text-center px-10 py-10">
         <Reveal>
-          <p className="font-lato text-[#7c4fb0] text-[9px] tracking-[0.5em] uppercase mb-6">
+          <p className="font-lato text-[#cf8c9a] text-[9px] tracking-[0.5em] uppercase mb-6">
             {done ? "Majlis Telah Bermula" : "Majlis Akan Bermula"}
           </p>
 
@@ -35,8 +35,8 @@ export default function Countdown() {
             <div className="flex gap-3 justify-center opacity-0 pointer-events-none select-none">
               {["Hari","Jam","Minit","Saat"].map(l => (
                 <div key={l} className="flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-2xl" style={{ background: "linear-gradient(145deg,#fff,#f0e8fa)", border: "1px solid #e6dcf3" }} />
-                  <span className="font-lato text-[9px] tracking-widest uppercase mt-1.5 text-[#6a5688]">{l}</span>
+                  <div className="w-16 h-16 rounded-2xl" style={{ background: "linear-gradient(145deg,#fff,#fcf2f4)", border: "1px solid #ecd9dd" }} />
+                  <span className="font-lato text-[9px] tracking-widest uppercase mt-1.5 text-[#8c676f]">{l}</span>
                 </div>
               ))}
             </div>
@@ -52,25 +52,25 @@ export default function Countdown() {
                 <div key={label} className="flex flex-col items-center">
                   {/* Separator dot between blocks */}
                   {i > 0 && (
-                    <span className="absolute text-[#7c4fb0] opacity-40 font-playfair text-xl"
+                    <span className="absolute text-[#cf8c9a] opacity-40 font-playfair text-xl"
                       style={{ marginTop: "1.1rem", marginLeft: "-0.9rem" }}>
                     </span>
                   )}
                   <div
                     className="w-16 h-16 flex items-center justify-center rounded-2xl shadow-sm"
                     style={{
-                      background: "linear-gradient(145deg, #fff 0%, #f0e8fa 100%)",
-                      border: "1px solid #e6dcf3",
+                      background: "linear-gradient(145deg, #fff 0%, #fcf2f4 100%)",
+                      border: "1px solid #ecd9dd",
                     }}
                   >
                     <span
-                      className="font-playfair text-[#382650] text-2xl font-semibold"
+                      className="font-playfair text-[#4a3036] text-2xl font-semibold"
                       style={{ fontVariantNumeric: "tabular-nums" }}
                     >
                       {pad(val)}
                     </span>
                   </div>
-                  <span className="font-lato text-[#6a5688] text-[9px] tracking-widest uppercase mt-1.5">
+                  <span className="font-lato text-[#8c676f] text-[9px] tracking-widest uppercase mt-1.5">
                     {label}
                   </span>
                 </div>

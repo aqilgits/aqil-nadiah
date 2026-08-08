@@ -32,65 +32,55 @@ export default function Gallery() {
     <section className="floral-section overflow-hidden">
       <div className="relative z-10 flex flex-col items-center px-4 py-10">
         <Reveal>
-          <h2 className="font-script text-[3.2rem] text-[#382650] leading-none mb-7 drop-shadow-sm text-center">
+          <h2 className="font-script text-[3.2rem] text-[#4a3036] leading-none mb-7 drop-shadow-sm text-center">
             Galeri
           </h2>
 
-          {/* Coverflow stage */}
+          {/* Modern Slide Gallery */}
           <div
-            className="relative w-full h-[300px] flex items-center justify-center select-none"
-            style={{ perspective: "1100px" }}
+            className="relative w-full h-[400px] flex items-center justify-center select-none overflow-hidden rounded-2xl"
             onTouchStart={onTouchStart}
             onTouchEnd={onTouchEnd}
           >
             {PHOTOS.map((p, i) => {
-              // shortest circular distance from active
-              let offset = i - active;
-              if (offset > n / 2) offset -= n;
-              if (offset < -n / 2) offset += n;
-              const abs = Math.abs(offset);
-              if (abs > 1) return null; // render center + immediate neighbours only
+              const isCenter = i === active;
+              const isPrev = i === (active - 1 + n) % n;
+              const isNext = i === (active + 1) % n;
 
-              const isCenter = offset === 0;
+              let translate = "translate-x-full opacity-0";
+              let zIndex = 0;
+              let scale = "scale-95";
+
+              if (isCenter) {
+                translate = "translate-x-0 opacity-100";
+                zIndex = 10;
+                scale = "scale-100";
+              } else if (isPrev) {
+                translate = "-translate-x-full opacity-0";
+                zIndex = 5;
+              } else if (isNext) {
+                translate = "translate-x-full opacity-0";
+                zIndex = 5;
+              }
+
               return (
                 <div
                   key={i}
-                  onClick={() => !isCenter && setActive(i)}
-                  className="absolute transition-all duration-500 ease-out"
-                  style={{
-                    width: 190,
-                    height: 262,
-                    transform: `translateX(${offset * 122}px) scale(${
-                      isCenter ? 1 : 0.82
-                    }) rotateY(${offset * -26}deg)`,
-                    opacity: isCenter ? 1 : 0.5,
-                    zIndex: 10 - abs,
-                    cursor: isCenter ? "default" : "pointer",
-                    transformStyle: "preserve-3d",
-                  }}
+                  className={`absolute top-0 left-0 w-full h-full transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${translate} ${zIndex > 0 ? "" : "pointer-events-none"}`}
+                  style={{ zIndex }}
                 >
                   <div
-                    className="w-full h-full overflow-hidden flex flex-col items-center justify-center"
+                    className={`w-full h-full overflow-hidden transition-transform duration-700 ${scale}`}
                     style={{
-                      background: p.bg,
-                      borderRadius: "1.25rem",
-                      border: isCenter
-                        ? "5px solid #ffffff"
-                        : "3px solid rgba(255,255,255,0.7)",
-                      boxShadow: isCenter
-                        ? "0 16px 40px rgba(88,54,140,0.30)"
-                        : "0 8px 20px rgba(88,54,140,0.16)",
+                      boxShadow: isCenter ? "0 20px 50px rgba(44, 54, 45, 0.2)" : "none",
                     }}
                   >
-                    {/* Replace this block with a real <img> */}
-                    <p className="font-lato text-white/70 text-xs tracking-[0.3em] uppercase">
-                      {p.label}
-                    </p>
-                    {isCenter && (
-                      <p className="font-lato text-white/45 text-[8.5px] tracking-widest mt-1.5">
-                        Ganti dengan foto sebenar
-                      </p>
-                    )}
+                    <img
+                      src={p.src}
+                      alt={p.label}
+                      className="w-full h-full object-cover rounded-2xl"
+                      draggable={false}
+                    />
                   </div>
                 </div>
               );
@@ -108,10 +98,10 @@ export default function Gallery() {
                   aria-label={`Foto ${i + 1}`}
                   className="rounded-full transition-all duration-300"
                   style={{
-                    width: on ? 9 : 7,
-                    height: on ? 9 : 7,
-                    background: on ? "#7c4fb0" : "#e6dcf3",
-                    boxShadow: on ? "0 0 0 3px rgba(124,79,176,0.22)" : "none",
+                    width: on ? 24 : 8,
+                    height: 8,
+                    background: on ? "#cf8c9a" : "#ecd9dd",
+                    boxShadow: on ? "0 0 0 2px rgba(114, 137, 118, 0.2)" : "none",
                   }}
                 />
               );

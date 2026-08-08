@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Great_Vibes, Lato } from "next/font/google";
+import { Cormorant_Garamond, Alex_Brush, Montserrat } from "next/font/google";
 import BottomNav from "@/components/BottomNav";
 import Petals from "@/components/Petals";
 import "./globals.css";
 
-const playfair = Playfair_Display({ variable: "--font-playfair", subsets: ["latin"] });
-const greatVibes = Great_Vibes({ variable: "--font-script", weight: "400", subsets: ["latin"] });
-const lato = Lato({ variable: "--font-lato", weight: ["300", "400", "700"], subsets: ["latin"] });
+const playfair = Cormorant_Garamond({ variable: "--font-playfair", weight: ["300", "400", "600"], subsets: ["latin"] });
+const greatVibes = Alex_Brush({ variable: "--font-script", weight: "400", subsets: ["latin"] });
+const lato = Montserrat({ variable: "--font-lato", weight: ["300", "400", "500", "600"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Nadiah & Aqil — Majlis Perkahwinan",
-  description: "Jemputan Majlis Perkahwinan Nadiah & Aqil | 30.08.2026",
+  title: "Aqil & Nadiah — Majlis Perkahwinan",
+  description: "Jemputan Majlis Perkahwinan Aqil & Nadiah | 12.09.2026",
 };
 
 export const viewport: Viewport = {
@@ -23,14 +23,14 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ms" className={`${playfair.variable} ${greatVibes.variable} ${lato.variable}`}>
-      <body className="bg-[#e5dcf0] font-lato overflow-hidden">
+      <body className="bg-[#f5e1e5] font-lato overflow-hidden">
         {/* Fixed floral border — sits above the scroll pane */}
         <div className="floral-frame" aria-hidden="true" />
         {/* Petals drift across every section */}
         <Petals />
         {/* Scrollable pane — masked so content only shows inside the frame */}
         <div className="content-viewport no-scrollbar">
-          <div className="w-full max-w-[430px] min-h-dvh pb-20 bg-[#f7f3fb] mx-auto">
+          <div className="w-full max-w-[430px] min-h-dvh pb-20 bg-[#ffffff] mx-auto px-12">
             {children}
           </div>
         </div>

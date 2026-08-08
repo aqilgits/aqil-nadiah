@@ -17,16 +17,16 @@ function Field({
 }) {
   return (
     <div className="w-full relative">
-      <label className="block font-lato text-[#7c4fb0] text-[9px] tracking-[0.35em] uppercase mb-1.5">
+      <label className="block font-lato text-[#cf8c9a] text-[9px] tracking-[0.35em] uppercase mb-1.5">
         {label}
       </label>
       <input
         type={type}
         value={value}
         onChange={e => onChange(e.target.value)}
-        className="w-full bg-white/75 border-b-2 border-[#e6dcf3] px-0 py-2.5
-                   text-[#382650] font-playfair text-base placeholder-[#a87bc4]/40
-                   focus:outline-none focus:border-[#7c4fb0] transition-colors"
+        className="w-full bg-white/75 border-b-2 border-[#ecd9dd] px-0 py-2.5
+                   text-[#4a3036] font-playfair text-base placeholder-[#d69ea9]/40
+                   focus:outline-none focus:border-[#cf8c9a] transition-colors"
         style={{ borderRadius: 0, background: "transparent" }}
       />
     </div>
@@ -67,14 +67,14 @@ export default function RSVP() {
     <section className="floral-section overflow-hidden" id="rsvp">
       <div className="relative z-10 flex flex-col items-center text-center px-12 py-10">
         <Reveal>
-          <h2 className="font-script text-[3.2rem] text-[#382650] leading-none mb-6 drop-shadow-sm">
+          <h2 className="font-script text-[3.2rem] text-[#4a3036] leading-none mb-6 drop-shadow-sm">
             Kehadiran
           </h2>
 
           {status === "sent" ? (
             <div className="py-6">
-              <p className="font-playfair italic text-[#a87bc4] text-lg">Terima kasih ✦</p>
-              <p className="font-lato text-[#6a5688] text-[11px] leading-loose mt-2">
+              <p className="font-playfair italic text-[#d69ea9] text-lg">Terima kasih ✦</p>
+              <p className="font-lato text-[#8c676f] text-[11px] leading-loose mt-2">
                 Kehadiran anda telah disahkan.<br />Kami menantikan kedatangan anda.
               </p>
             </div>
@@ -83,21 +83,21 @@ export default function RSVP() {
               <Field label="Nama anda" value={name} onChange={setName} />
 
               <div>
-                <label className="block font-lato text-[#7c4fb0] text-[9px] tracking-[0.35em] uppercase mb-1.5">
+                <label className="block font-lato text-[#cf8c9a] text-[9px] tracking-[0.35em] uppercase mb-1.5">
                   Bilangan kehadiran
                 </label>
-                <div className="flex items-center gap-5 border-b-2 border-[#e6dcf3] pb-2.5">
+                <div className="flex items-center gap-5 border-b-2 border-[#ecd9dd] pb-2.5">
                   <button
                     type="button"
                     onClick={() => setCount(c => Math.max(1, c - 1))}
-                    className="w-7 h-7 rounded-full border border-[#e6dcf3] bg-white/80
-                               flex items-center justify-center text-[#6a5688] text-base
-                               active:bg-[#f0e8fa] transition-colors"
+                    className="w-7 h-7 rounded-full border border-[#ecd9dd] bg-white/80
+                               flex items-center justify-center text-[#8c676f] text-base
+                               active:bg-[#fcf2f4] transition-colors"
                   >
                     −
                   </button>
                   <span
-                    className="font-playfair text-[#382650] text-xl w-8 text-center"
+                    className="font-playfair text-[#4a3036] text-xl w-8 text-center"
                     style={{ fontVariantNumeric: "tabular-nums" }}
                   >
                     {count}
@@ -105,13 +105,13 @@ export default function RSVP() {
                   <button
                     type="button"
                     onClick={() => setCount(c => Math.min(10, c + 1))}
-                    className="w-7 h-7 rounded-full border border-[#e6dcf3] bg-white/80
-                               flex items-center justify-center text-[#6a5688] text-base
-                               active:bg-[#f0e8fa] transition-colors"
+                    className="w-7 h-7 rounded-full border border-[#ecd9dd] bg-white/80
+                               flex items-center justify-center text-[#8c676f] text-base
+                               active:bg-[#fcf2f4] transition-colors"
                   >
                     +
                   </button>
-                  <span className="font-lato text-[#6a5688] text-[10px]">orang</span>
+                  <span className="font-lato text-[#8c676f] text-[10px]">orang</span>
                 </div>
               </div>
 
@@ -120,9 +120,9 @@ export default function RSVP() {
                 className="w-full mt-2 py-3.5 rounded-full font-lato text-[10px] tracking-[0.4em]
                            uppercase transition-all active:opacity-70"
                 style={{
-                  background: "linear-gradient(135deg, #7c4fb0, #a87bc4)",
+                  background: "linear-gradient(135deg, #cf8c9a, #d69ea9)",
                   color: "white",
-                  boxShadow: "0 4px 20px rgba(124,79,176,0.3)",
+                  boxShadow: "0 4px 20px rgba(207,140,154,0.3)",
                 }}
               >
                 Sahkan Kehadiran

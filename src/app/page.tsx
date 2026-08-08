@@ -17,7 +17,6 @@ export default function Home() {
       <EventDetails />
       <Doa />
       <Countdown />
-      <Gallery />
       <RSVP />
       <Wishes />
       {/* <Gift /> */}

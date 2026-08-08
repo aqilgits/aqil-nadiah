@@ -22,10 +22,10 @@ export default function Gift() {
     <section className="floral-section overflow-hidden" id="hadiah">
       <div className="relative z-10 flex flex-col items-center text-center px-12 py-10">
         <Reveal>
-          <h2 className="font-script text-[3.2rem] text-[#382650] leading-none mb-2 drop-shadow-sm">
+          <h2 className="font-script text-[3.2rem] text-[#4a3036] leading-none mb-2 drop-shadow-sm">
             Hadiah
           </h2>
-          <p className="font-lato text-[#6a5688] text-[10px] tracking-widest uppercase mb-7">
+          <p className="font-lato text-[#8c676f] text-[10px] tracking-widest uppercase mb-7">
             Kiriman wang tunai dialu-alukan
           </p>
 
@@ -36,15 +36,15 @@ export default function Gift() {
                 className="rounded-2xl px-6 py-5 text-left"
                 style={{
                   background: "rgba(255,255,255,0.72)",
-                  border: "1px solid #e6dcf3",
+                  border: "1px solid #ecd9dd",
                 }}
               >
-                <p className="font-lato text-[#7c4fb0] text-[9px] tracking-[0.4em] uppercase mb-1">
+                <p className="font-lato text-[#cf8c9a] text-[9px] tracking-[0.4em] uppercase mb-1">
                   {a.bank}
                 </p>
-                <p className="font-playfair text-[#382650] text-sm">{a.name}</p>
+                <p className="font-playfair text-[#4a3036] text-sm">{a.name}</p>
                 <p
-                  className="font-playfair text-[#382650] text-xl tracking-widest mt-2"
+                  className="font-playfair text-[#4a3036] text-xl tracking-widest mt-2"
                   style={{ fontVariantNumeric: "tabular-nums" }}
                 >
                   {a.number}
@@ -52,8 +52,8 @@ export default function Gift() {
                 <button
                   onClick={() => copy(i, a.number)}
                   className="mt-3 font-lato text-[9px] tracking-[0.35em] uppercase px-4 py-1.5
-                             rounded-full border border-[#e6dcf3] transition-colors"
-                  style={{ color: copied === i ? "#7c4fb0" : "#6a5688" }}
+                             rounded-full border border-[#ecd9dd] transition-colors"
+                  style={{ color: copied === i ? "#cf8c9a" : "#8c676f" }}
                 >
                   {copied === i ? "✓ Disalin" : "Salin Nombor"}
                 </button>
