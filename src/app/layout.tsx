@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Alex_Brush, Montserrat } from "next/font/google";
 import BottomNav from "@/components/BottomNav";
 import Petals from "@/components/Petals";
+import AppShell from "@/components/AppShell";
 import "./globals.css";
 
 const playfair = Cormorant_Garamond({ variable: "--font-playfair", weight: ["300", "400", "600"], subsets: ["latin"] });
@@ -36,6 +37,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </div>
         {/* BottomNav lives outside the mask so it is never clipped */}
         <BottomNav />
+        {/* Door + music player */}
+        <AppShell />
       </body>
     </html>
   );
