@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 /* ── Shared event data ─────────────────────────────── */
 const VENUE_NAME = "No 14, Jalan Orked,";
 const VENUE_ADDR = "Kampung seri machap, Johor";
-const DATE_LABEL = "Ahad · 12 September 2026";
+const DATE_LABEL = "Sabtu· 12 September 2026";
 const TIME_LABEL = "11:00 AM – 4:00 PM";
 
 const CONTACTS = [

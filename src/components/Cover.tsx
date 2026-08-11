@@ -74,7 +74,7 @@ export default function Cover() {
 
         {/* Date */}
         <p className="cover-enter cover-enter-4 font-lato text-[#4a3036] text-[10px] tracking-[0.38em] uppercase">
-          Ahad &nbsp;·&nbsp; 12 September 2026
+          Sabtu &nbsp;·&nbsp; 12 September 2026
         </p>
         <p className="cover-enter cover-enter-5 text-[#cf8c9a] text-[8px] tracking-[0.42em] mt-2 font-lato">
           #AqilLoveNadiah
